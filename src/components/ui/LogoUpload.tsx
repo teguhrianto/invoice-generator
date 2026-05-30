@@ -109,22 +109,24 @@ export function LogoUpload({ value, onChange }: LogoUploadProps) {
       <span className="text-sm font-medium text-[#212121]">Logo</span>
 
       {value ? (
-        <div className="relative inline-flex items-center justify-center rounded-md border border-[#e0e0e0] bg-[#f5f5f5] p-3 min-h-[80px] min-w-[120px] max-w-[220px]">
-          <img
-            src={value}
-            alt="Invoice logo preview"
-            className="max-h-14 w-auto max-w-[180px] object-contain"
-          />
+        <div className="relative inline-block">
+          <div className="flex items-center justify-center rounded-md border border-[#e0e0e0] bg-[#f5f5f5] p-3 min-h-[80px] min-w-[120px] max-w-[220px]">
+            <img
+              src={value}
+              alt="Invoice logo preview"
+              className="max-h-14 w-auto max-w-[180px] object-contain"
+            />
+          </div>
           <button
             type="button"
             onClick={handleRemove}
             aria-label="Remove logo"
-            className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#757575] text-white hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 transition-colors duration-150"
+            className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-white border border-[#e0e0e0] text-[#757575] shadow-sm hover:bg-red-500 hover:border-red-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 transition-colors duration-150"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="10"
-              height="10"
+              width="8"
+              height="8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

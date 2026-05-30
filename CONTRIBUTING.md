@@ -28,7 +28,7 @@ Thank you for taking the time to contribute. This document covers everything you
 
 ```bash
 # 1. Fork the repository on GitHub, then clone your fork
-git clone https://github.com/teguhrianto/invoice-generator.git
+git clone https://github.com/<your-username>/invoice-generator.git
 cd invoice-generator
 
 # 2. Install dependencies (Husky hooks are set up automatically via the prepare script)

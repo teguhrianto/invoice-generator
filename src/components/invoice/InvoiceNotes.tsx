@@ -15,7 +15,7 @@ export function InvoiceNotes() {
   const { state, dispatch } = useInvoice();
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div className="grid grid-cols-1 gap-4">
       <Textarea
         label="Notes / Payment terms"
         placeholder="e.g. Payment is due within 15 days"
