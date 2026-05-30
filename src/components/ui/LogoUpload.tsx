@@ -109,19 +109,30 @@ export function LogoUpload({ value, onChange }: LogoUploadProps) {
       <span className="text-sm font-medium text-[#212121]">Logo</span>
 
       {value ? (
-        <div className="flex items-start gap-3">
+        <div className="relative inline-flex items-center justify-center rounded-md border border-[#e0e0e0] bg-[#f5f5f5] p-3 min-h-[80px] min-w-[120px] max-w-[220px]">
           <img
             src={value}
             alt="Invoice logo preview"
-            className="h-16 w-auto max-w-[180px] rounded border border-[#e0e0e0] object-contain"
+            className="max-h-14 w-auto max-w-[180px] object-contain"
           />
           <button
             type="button"
             onClick={handleRemove}
-            className="rounded-md border border-[#e0e0e0] bg-white px-3 py-1.5 text-xs font-medium text-[#212121] hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4caf50] focus-visible:ring-offset-1 transition-colors duration-150 cursor-pointer"
             aria-label="Remove logo"
+            className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#757575] text-white hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 transition-colors duration-150"
           >
-            Remove
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="10"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={3}
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </button>
         </div>
       ) : (

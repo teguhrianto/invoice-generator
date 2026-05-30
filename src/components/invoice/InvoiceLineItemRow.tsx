@@ -108,17 +108,14 @@ export function InvoiceLineItemRow({
         className="w-full rounded border border-transparent bg-transparent px-2 py-1 text-sm text-[#212121] placeholder:text-[#bdbdbd] focus:border-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:ring-offset-1 transition-colors duration-150"
       />
 
-      {/* Unit cost */}
+      {/* Unit cost — negative values are valid (e.g. loan repayment, credit) */}
       <input
         type="number"
         value={item.unitCost === 0 ? "" : item.unitCost}
         placeholder="0"
-        min={0}
         step="any"
         aria-label={`Item ${index + 1} unit cost`}
-        onChange={(e) =>
-          onUpdate(item.id, "unitCost", Math.max(0, parseFloat(e.target.value) || 0))
-        }
+        onChange={(e) => onUpdate(item.id, "unitCost", parseFloat(e.target.value) || 0)}
         className="w-full rounded border border-transparent bg-transparent px-2 py-1 text-sm text-[#212121] placeholder:text-[#bdbdbd] text-right focus:border-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:ring-offset-1 transition-colors duration-150"
       />
 

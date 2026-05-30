@@ -25,7 +25,8 @@ export function calculateTax(taxableBase: number, taxPercent: number): number {
 /**
  * Calculates the invoice total from its components.
  * Formula: subtotal - discountAmount + taxAmount + shippingFee
- * Result is clamped to 0 to prevent negative totals.
+ * Negative totals are preserved — a net-negative invoice is valid when line
+ * items include deductions such as loan repayments or credits.
  */
 export function calculateTotal(
   subtotal: number,
@@ -33,7 +34,7 @@ export function calculateTotal(
   discountAmount: number,
   shippingFee: number,
 ): number {
-  return round2(Math.max(0, subtotal - discountAmount + taxAmount + shippingFee));
+  return round2(subtotal - discountAmount + taxAmount + shippingFee);
 }
 
 /**
