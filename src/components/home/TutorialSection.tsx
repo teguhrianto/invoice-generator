@@ -41,10 +41,10 @@ export function TutorialSection() {
   return (
     <section className="bg-white px-4 py-16 sm:py-20">
       <div className="mx-auto max-w-4xl">
-        <h2 className="text-2xl sm:text-3xl font-bold text-[#212121] mb-3">
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#212121] mb-3 text-center">
           How to create an invoice online
         </h2>
-        <p className="text-sm text-[#757575] mb-10 max-w-xl">
+        <p className="text-sm text-[#757575] mb-10 text-center">
           Follow these four steps to fill in and download your invoice in under a minute.
         </p>
 

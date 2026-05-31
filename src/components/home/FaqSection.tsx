@@ -64,7 +64,7 @@ function AccordionItem({ item, isOpen, onToggle, id }: AccordionItemProps) {
         aria-expanded={isOpen}
         aria-controls={panelId}
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 py-5 text-left group"
+        className="w-full flex cursor-pointer items-center justify-between gap-4 py-5 text-left group"
       >
         <span className="text-base sm:text-lg font-semibold text-[#b5f23d] group-hover:text-white transition-colors duration-150">
           {item.question}
@@ -123,7 +123,7 @@ export function FaqSection() {
     <section className="bg-[#163016] px-4 py-16 sm:py-20">
       <div className="mx-auto max-w-4xl">
         <h2
-          className="text-4xl sm:text-6xl text-[#b5f23d] uppercase leading-none tracking-wide mb-12"
+          className="text-4xl sm:text-5xl text-[#b5f23d] uppercase leading-none tracking-wide mb-12 text-center"
           style={{ fontFamily: "var(--font-display)" }}
         >
           FAQ About Creating an Invoice.
