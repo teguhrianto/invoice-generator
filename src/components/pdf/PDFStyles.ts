@@ -37,7 +37,7 @@ export const pdfStyles = StyleSheet.create({
     objectFit: "contain",
   },
   invoiceTitle: {
-    fontSize: 34,
+    fontSize: 24,
     fontFamily: "Helvetica-Bold",
     color: "#1a1a2e",
     letterSpacing: 1,
@@ -51,13 +51,13 @@ export const pdfStyles = StyleSheet.create({
     gap: 8,
   },
   headerMetaLabel: {
-    fontSize: 11,
+    fontSize: 12,
     color: "#757575",
     width: 80,
     textAlign: "right",
   },
   headerMetaValue: {
-    fontSize: 11,
+    fontSize: 12,
     color: "#212121",
     fontFamily: "Helvetica-Bold",
   },
@@ -73,7 +73,7 @@ export const pdfStyles = StyleSheet.create({
     flex: 1,
   },
   partyLabel: {
-    fontSize: 10,
+    fontSize: 8,
     color: "#757575",
     textTransform: "uppercase",
     letterSpacing: 0.8,
@@ -144,14 +144,14 @@ export const pdfStyles = StyleSheet.create({
 
   // ── Notes / bank details ─────────────────────────────────────────────────────
   sectionLabel: {
-    fontSize: 10,
+    fontSize: 8,
     color: "#757575",
     textTransform: "uppercase",
     letterSpacing: 0.8,
     marginBottom: 4,
   },
   sectionValue: {
-    fontSize: 11,
+    fontSize: 12,
     color: "#212121",
     lineHeight: 1.6,
     marginBottom: 16,

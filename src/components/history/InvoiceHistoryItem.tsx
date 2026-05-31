@@ -37,62 +37,64 @@ export function InvoiceHistoryItem({ summary, onLoad, onDelete }: InvoiceHistory
     <article
       data-testid="history-card"
       aria-label={`Invoice ${summary.invoiceNumber || "unnamed"}`}
-      className="flex flex-col gap-3 rounded-lg border border-[#e0e0e0] bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between"
+      className="flex items-center justify-between gap-4 rounded-lg border border-[#e0e0e0] bg-white px-4 py-3 shadow-sm"
     >
-      {/* Metadata */}
-      <div className="flex flex-col gap-1 min-w-0">
+      {/* Metadata — single row */}
+      <div className="flex items-center gap-4 min-w-0 flex-1">
         <span className="text-sm font-semibold text-[#212121] truncate">
-          {summary.invoiceNumber || <span className="text-[#757575]">No invoice number</span>}
+          {summary.invoiceNumber || <span className="text-[#757575]">—</span>}
         </span>
-        <span className="text-sm text-[#757575] truncate">{billToDisplay}</span>
-        <span className="text-xs text-[#757575]">
-          {summary.invoiceDate ? formatDate(summary.invoiceDate) : "No date"}
+        <span className="text-sm text-[#757575] truncate hidden sm:inline">{billToDisplay}</span>
+        <span className="text-xs text-[#757575] shrink-0">
+          {summary.invoiceDate ? formatDate(summary.invoiceDate) : "—"}
         </span>
       </div>
 
       {/* Total + actions */}
-      <div className="flex flex-col items-start gap-2 sm:items-end shrink-0">
-        <span className="text-base font-bold text-[#212121]">
+      <div className="flex items-center gap-2 shrink-0">
+        <span className="text-sm font-bold text-[#212121] mr-2">
           {formatCurrency(summary.total, summary.currency)}
         </span>
-        <div className="flex gap-2">
-          <Button
-            variant="secondary"
-            onClick={() => onLoad(summary.id)}
-            className="w-auto px-4 py-1.5 text-xs"
-            aria-label={`Load invoice ${summary.invoiceNumber || summary.id}`}
-          >
-            Load
-          </Button>
-          {confirming ? (
-            <>
-              <Button
-                variant="danger"
-                onClick={() => onDelete(summary.id)}
-                className="w-auto px-4 py-1.5 text-xs"
-                aria-label={`Confirm delete invoice ${summary.invoiceNumber || summary.id}`}
-              >
-                Confirm
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={() => setConfirming(false)}
-                className="w-auto px-4 py-1.5 text-xs"
-              >
-                Cancel
-              </Button>
-            </>
-          ) : (
+        <Button
+          variant="secondary"
+          onClick={() => onLoad(summary.id)}
+          size="sm"
+          className="w-auto"
+          aria-label={`Load invoice ${summary.invoiceNumber || summary.id}`}
+        >
+          Load
+        </Button>
+        {confirming ? (
+          <>
             <Button
               variant="danger"
-              onClick={() => setConfirming(true)}
-              className="w-auto px-4 py-1.5 text-xs"
-              aria-label={`Delete invoice ${summary.invoiceNumber || summary.id}`}
+              onClick={() => onDelete(summary.id)}
+              size="sm"
+              className="w-auto"
+              aria-label={`Confirm delete invoice ${summary.invoiceNumber || summary.id}`}
             >
-              Delete
+              Confirm
             </Button>
-          )}
-        </div>
+            <Button
+              variant="secondary"
+              onClick={() => setConfirming(false)}
+              size="sm"
+              className="w-auto"
+            >
+              Cancel
+            </Button>
+          </>
+        ) : (
+          <Button
+            variant="danger"
+            onClick={() => setConfirming(true)}
+            size="sm"
+            className="w-auto"
+            aria-label={`Delete invoice ${summary.invoiceNumber || summary.id}`}
+          >
+            Delete
+          </Button>
+        )}
       </div>
     </article>
   );
