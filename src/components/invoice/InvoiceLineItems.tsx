@@ -45,32 +45,33 @@ export function InvoiceLineItems() {
 
   return (
     <section aria-label="Line items" className="rounded-lg bg-[#f5f5f5] p-4 flex flex-col gap-3">
-      {/* Column headers — mirrors flex layout of InvoiceLineItemRow */}
+      {/* Column headers — desktop only, hidden on mobile */}
       {state.lineItems.length > 0 && (
-        <div className="flex items-center gap-2 pl-9 text-xs font-semibold uppercase tracking-wider text-[#9e9e9e]">
+        <div className="hidden sm:flex items-center gap-2 pl-9 text-xs font-semibold uppercase tracking-wider text-[#616161]">
           <span className="flex-1 min-w-0 pl-4">Item description</span>
           <span className="w-30 shrink-0 text-right pr-4">Unit cost</span>
           <span className="w-25 shrink-0 text-right pr-4">Quantity</span>
           <span className="w-30 shrink-0 text-right pr-4">Amount</span>
-          {/* Spacer matching × button width */}
-          <span className="shrink-0 w-9" />
+          <span className="shrink-0 w-7" />
         </div>
       )}
 
-      {/* Rows — pl-9 leaves space for the absolute-positioned reorder buttons */}
-      <div className="flex flex-col gap-2 pl-9">
+      {/* Rows: pl-9 on sm+ for reorder buttons, no offset on mobile */}
+      <div className="flex flex-col sm:pl-9">
         {state.lineItems.map((item, index) => (
-          <InvoiceLineItemRow
-            key={item.id}
-            item={item}
-            index={index}
-            total={state.lineItems.length}
-            currency={state.currency}
-            onUpdate={handleUpdate}
-            onRemove={handleRemove}
-            onMoveUp={handleMoveUp}
-            onMoveDown={handleMoveDown}
-          />
+          <React.Fragment key={item.id}>
+            {index > 0 && <hr className="border-[#e8e8e8] my-3" />}
+            <InvoiceLineItemRow
+              item={item}
+              index={index}
+              total={state.lineItems.length}
+              currency={state.currency}
+              onUpdate={handleUpdate}
+              onRemove={handleRemove}
+              onMoveUp={handleMoveUp}
+              onMoveDown={handleMoveDown}
+            />
+          </React.Fragment>
         ))}
       </div>
 

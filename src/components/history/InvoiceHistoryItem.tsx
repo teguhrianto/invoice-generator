@@ -42,10 +42,10 @@ export function InvoiceHistoryItem({ summary, onLoad, onDelete }: InvoiceHistory
       {/* Metadata — single row */}
       <div className="flex items-center gap-4 min-w-0 flex-1">
         <span className="text-sm font-semibold text-[#212121] truncate">
-          {summary.invoiceNumber || <span className="text-[#757575]">—</span>}
+          {summary.invoiceNumber || <span className="text-[#616161]">—</span>}
         </span>
-        <span className="text-sm text-[#757575] truncate hidden sm:inline">{billToDisplay}</span>
-        <span className="text-xs text-[#757575] shrink-0">
+        <span className="text-sm text-[#616161] truncate hidden sm:inline">{billToDisplay}</span>
+        <span className="text-xs text-[#616161] shrink-0">
           {summary.invoiceDate ? formatDate(summary.invoiceDate) : "—"}
         </span>
       </div>

@@ -44,7 +44,7 @@ export function TutorialSection() {
         <h2 className="text-2xl sm:text-3xl font-bold text-[#212121] mb-3 text-center">
           How to create an invoice online
         </h2>
-        <p className="text-sm text-[#757575] mb-10 text-center">
+        <p className="text-sm text-[#616161] mb-10 text-center">
           Follow these four steps to fill in and download your invoice in under a minute.
         </p>
 
@@ -64,7 +64,7 @@ export function TutorialSection() {
 
               <div className="flex flex-col gap-1">
                 <span className="text-sm font-semibold text-[#212121]">{step.title}</span>
-                <p className="text-sm text-[#757575] leading-relaxed">{step.description}</p>
+                <p className="text-sm text-[#616161] leading-relaxed">{step.description}</p>
               </div>
             </div>
           ))}

@@ -31,7 +31,7 @@ export function Select({ label, options, className = "", id: idProp, ...rest }: 
     <div className="flex flex-col gap-1">
       <label
         htmlFor={selectId}
-        className="text-xs font-semibold uppercase tracking-wider text-[#757575]"
+        className="text-xs font-semibold uppercase tracking-wider text-[#616161]"
       >
         {label}
       </label>

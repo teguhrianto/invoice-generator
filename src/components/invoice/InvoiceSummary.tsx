@@ -20,13 +20,13 @@ export function InvoiceSummary() {
     <div className="rounded-lg border border-[#e0e0e0] bg-white p-4 flex flex-col gap-3 text-sm">
       {/* Subtotal row */}
       <div className="flex items-center justify-between">
-        <span className="text-[#757575]">Subtotal</span>
+        <span className="text-[#616161]">Subtotal</span>
         <span className="text-[#212121] font-medium">{formatCurrency(subtotal, currency)}</span>
       </div>
 
       {/* Tax % input */}
       <div className="flex items-center justify-between gap-4">
-        <label htmlFor="tax-percent" className="shrink-0 text-[#757575]">
+        <label htmlFor="tax-percent" className="shrink-0 text-[#616161]">
           Tax (%)
         </label>
         <input
@@ -52,14 +52,14 @@ export function InvoiceSummary() {
       {/* Tax amount display */}
       {taxAmount > 0 && (
         <div className="flex items-center justify-between">
-          <span className="text-[#757575]">Tax amount</span>
+          <span className="text-[#616161]">Tax amount</span>
           <span className="text-[#212121]">{formatCurrency(taxAmount, currency)}</span>
         </div>
       )}
 
       {/* Discount input */}
       <div className="flex items-center justify-between gap-4">
-        <label htmlFor="discount-amount" className="shrink-0 text-[#757575]">
+        <label htmlFor="discount-amount" className="shrink-0 text-[#616161]">
           Discount ({currency.symbol})
         </label>
         <input
@@ -83,7 +83,7 @@ export function InvoiceSummary() {
 
       {/* Shipping fee input */}
       <div className="flex items-center justify-between gap-4">
-        <label htmlFor="shipping-fee" className="shrink-0 text-[#757575]">
+        <label htmlFor="shipping-fee" className="shrink-0 text-[#616161]">
           Shipping ({currency.symbol})
         </label>
         <input

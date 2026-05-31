@@ -38,7 +38,7 @@ export function Textarea({
     <div className="flex flex-col gap-1">
       <label
         htmlFor={textareaId}
-        className="text-xs font-semibold uppercase tracking-wider text-[#757575]"
+        className="text-xs font-semibold uppercase tracking-wider text-[#616161]"
       >
         {label}
       </label>

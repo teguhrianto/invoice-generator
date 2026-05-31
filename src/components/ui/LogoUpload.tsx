@@ -83,7 +83,7 @@ export function LogoUpload({ value, onChange }: LogoUploadProps) {
 
   return (
     <div className="flex flex-col gap-1">
-      <span className="text-sm font-medium text-[#212121]">Logo</span>
+      <span className="text-sm font-medium text-[#616161]">Logo</span>
 
       {value ? (
         <div className="relative inline-block">
@@ -98,7 +98,7 @@ export function LogoUpload({ value, onChange }: LogoUploadProps) {
             type="button"
             onClick={handleRemove}
             aria-label="Remove logo"
-            className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-white border border-[#e0e0e0] text-[#757575] shadow-sm hover:bg-red-500 hover:border-red-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 transition-colors duration-150"
+            className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-white border border-[#e0e0e0] text-[#616161] shadow-sm hover:bg-red-500 hover:border-red-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 transition-colors duration-150"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +131,7 @@ export function LogoUpload({ value, onChange }: LogoUploadProps) {
             viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth={1.5}
-            className="text-[#757575]"
+            className="text-[#616161]"
             aria-hidden="true"
           >
             <path
@@ -140,8 +140,8 @@ export function LogoUpload({ value, onChange }: LogoUploadProps) {
               d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
             />
           </svg>
-          <span className="text-sm text-[#757575]">Upload file</span>
-          <span className="text-xs text-[#757575]">JPG, JPEG, PNG, less than 200KB</span>
+          <span className="text-sm text-[#616161]">Upload file</span>
+          <span className="text-xs text-[#616161]">JPG, JPEG, PNG, less than 200KB</span>
         </div>
       )}
 
