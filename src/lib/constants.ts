@@ -14,18 +14,6 @@ export const CURRENCIES: Currency[] = [
   { code: "MYR", label: "Malaysian Ringgit", symbol: "RM", locale: "ms-MY" },
 ];
 
-/** Fallback USD → IDR exchange rate used when currency is not IDR and the IDR equivalent note is shown. */
-export const IDR_FALLBACK_RATE = 16_000;
-
-/**
- * Override the fallback rate via environment variable NEXT_PUBLIC_IDR_RATE.
- * Useful for deployments that want a more current rate baked in at build time.
- * Falls back to IDR_FALLBACK_RATE when the env var is absent or non-numeric.
- */
-const _parsedRate = Number(process.env.NEXT_PUBLIC_IDR_RATE);
-export const IDR_RATE: number =
-  !isNaN(_parsedRate) && _parsedRate > 0 ? _parsedRate : IDR_FALLBACK_RATE;
-
 /** Default payment terms shown in the Notes field on a fresh invoice. */
 export const DEFAULT_NOTES = "Payment is due within 15 days";
 

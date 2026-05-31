@@ -60,9 +60,6 @@ Open [http://localhost:3000](http://localhost:3000).
 Copy `.env.example` to `.env.local` and set:
 
 ```env
-# Override the static USD → IDR fallback exchange rate shown in PDF notes
-NEXT_PUBLIC_IDR_RATE=16000
-
 # Canonical URL used in sitemap.xml and Open Graph tags
 NEXT_PUBLIC_SITE_URL=https://invoice-generator.teguhrianto.com
 ```
