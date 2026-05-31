@@ -16,11 +16,11 @@ export const pdfStyles = StyleSheet.create({
   // ── Page ────────────────────────────────────────────────────────────────────
   page: {
     fontFamily: "Helvetica",
-    fontSize: 10,
+    fontSize: 12,
     color: "#212121",
-    paddingTop: 48,
-    paddingBottom: 48,
-    paddingHorizontal: 48,
+    paddingTop: 24,
+    paddingBottom: 24,
+    paddingHorizontal: 24,
     backgroundColor: "#ffffff",
   },
 
@@ -37,7 +37,7 @@ export const pdfStyles = StyleSheet.create({
     objectFit: "contain",
   },
   invoiceTitle: {
-    fontSize: 28,
+    fontSize: 34,
     fontFamily: "Helvetica-Bold",
     color: "#1a1a2e",
     letterSpacing: 1,
@@ -51,13 +51,13 @@ export const pdfStyles = StyleSheet.create({
     gap: 8,
   },
   headerMetaLabel: {
-    fontSize: 9,
+    fontSize: 11,
     color: "#757575",
-    width: 72,
+    width: 80,
     textAlign: "right",
   },
   headerMetaValue: {
-    fontSize: 9,
+    fontSize: 11,
     color: "#212121",
     fontFamily: "Helvetica-Bold",
   },
@@ -73,14 +73,14 @@ export const pdfStyles = StyleSheet.create({
     flex: 1,
   },
   partyLabel: {
-    fontSize: 8,
+    fontSize: 10,
     color: "#757575",
     textTransform: "uppercase",
     letterSpacing: 0.8,
     marginBottom: 4,
   },
   partyValue: {
-    fontSize: 10,
+    fontSize: 12,
     color: "#212121",
     lineHeight: 1.5,
   },
@@ -93,12 +93,12 @@ export const pdfStyles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#1a1a2e",
     borderRadius: 4,
-    paddingVertical: 7,
+    paddingVertical: 8,
     paddingHorizontal: 10,
     marginBottom: 2,
   },
   tableHeaderCell: {
-    fontSize: 8,
+    fontSize: 10,
     color: "#ffffff",
     fontFamily: "Helvetica-Bold",
     textTransform: "uppercase",
@@ -106,7 +106,7 @@ export const pdfStyles = StyleSheet.create({
   },
   tableRow: {
     flexDirection: "row",
-    paddingVertical: 7,
+    paddingVertical: 8,
     paddingHorizontal: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#e0e0e0",
@@ -115,7 +115,7 @@ export const pdfStyles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
   },
   tableCell: {
-    fontSize: 10,
+    fontSize: 12,
     color: "#212121",
   },
   tableCellMuted: {
@@ -125,8 +125,8 @@ export const pdfStyles = StyleSheet.create({
   // Column widths (must sum to 100% of available space)
   colDescription: { flex: 3 },
   colUnitCost: { flex: 1, textAlign: "right" },
-  colQty: { width: 40, textAlign: "right" },
-  colAmount: { width: 80, textAlign: "right" },
+  colQty: { width: 44, textAlign: "right" },
+  colAmount: { width: 88, textAlign: "right" },
 
   // ── Bottom section ───────────────────────────────────────────────────────────
   bottomRow: {
@@ -139,19 +139,19 @@ export const pdfStyles = StyleSheet.create({
     flex: 1,
   },
   bottomRight: {
-    width: 220,
+    width: 240,
   },
 
   // ── Notes / bank details ─────────────────────────────────────────────────────
   sectionLabel: {
-    fontSize: 8,
+    fontSize: 10,
     color: "#757575",
     textTransform: "uppercase",
     letterSpacing: 0.8,
     marginBottom: 4,
   },
   sectionValue: {
-    fontSize: 9,
+    fontSize: 11,
     color: "#212121",
     lineHeight: 1.6,
     marginBottom: 16,
@@ -161,16 +161,16 @@ export const pdfStyles = StyleSheet.create({
   summaryRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingVertical: 4,
+    paddingVertical: 5,
     borderBottomWidth: 1,
     borderBottomColor: "#e0e0e0",
   },
   summaryLabel: {
-    fontSize: 9,
+    fontSize: 11,
     color: "#757575",
   },
   summaryValue: {
-    fontSize: 9,
+    fontSize: 11,
     color: "#212121",
     textAlign: "right",
   },
@@ -181,12 +181,12 @@ export const pdfStyles = StyleSheet.create({
     marginTop: 4,
   },
   summaryTotalLabel: {
-    fontSize: 11,
+    fontSize: 14,
     fontFamily: "Helvetica-Bold",
     color: "#1a1a2e",
   },
   summaryTotalValue: {
-    fontSize: 11,
+    fontSize: 14,
     fontFamily: "Helvetica-Bold",
     color: "#1a1a2e",
     textAlign: "right",
