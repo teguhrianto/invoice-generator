@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import Link from "next/link";
 import { InvoiceProvider } from "@/context/InvoiceContext";
 import { useInvoice } from "@/hooks/useInvoice";
 import { InvoiceHeader } from "@/components/invoice/InvoiceHeader";
@@ -57,122 +56,110 @@ function InvoiceFormInner() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5] py-8 px-4">
-      <div className="mx-auto max-w-3xl">
-        {/* History link */}
-        <div className="flex justify-end mb-3">
-          <Link
-            href="/history"
-            className="text-sm text-[#757575] hover:text-[#4caf50] underline-offset-2 hover:underline transition-colors duration-150"
-          >
-            View invoice history
-          </Link>
+    <div className="mx-auto max-w-4xl px-4 pb-16">
+      <div className="bg-white rounded-2xl shadow-xl shadow-black/10 border border-[#ebebeb] p-6 sm:p-8 flex flex-col gap-6">
+        {/* ── 1. Header: invoice number, PO, logo ─────────────────────────── */}
+        <InvoiceHeader />
+
+        <hr className="border-[#e0e0e0]" />
+
+        {/* ── 2. Company details / Bill to ────────────────────────────────── */}
+        <InvoiceParties />
+
+        <hr className="border-[#e0e0e0]" />
+
+        {/* ── 3. Currency + Dates row ──────────────────────────────────────── */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
+          <div className="sm:w-1/3">
+            <InvoiceCurrency />
+          </div>
+          <div className="flex-1">
+            <InvoiceDates />
+          </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-[#e0e0e0] p-6 sm:p-8 flex flex-col gap-6">
-          {/* ── 1. Header: invoice number, PO, logo ─────────────────────────── */}
-          <InvoiceHeader />
+        <hr className="border-[#e0e0e0]" />
 
-          <hr className="border-[#e0e0e0]" />
+        {/* ── 4. Line items ────────────────────────────────────────────────── */}
+        <InvoiceLineItems />
 
-          {/* ── 2. Company details / Bill to ────────────────────────────────── */}
-          <InvoiceParties />
+        <hr className="border-[#e0e0e0]" />
 
-          <hr className="border-[#e0e0e0]" />
+        {/* ── 5. Notes + Summary ───────────────────────────────────────────── */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <InvoiceNotes />
+          <InvoiceSummary />
+        </div>
 
-          {/* ── 3. Currency + Dates row ──────────────────────────────────────── */}
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
-            <div className="sm:w-1/3">
-              <InvoiceCurrency />
-            </div>
-            <div className="flex-1">
-              <InvoiceDates />
-            </div>
-          </div>
+        <hr className="border-[#e0e0e0]" />
 
-          <hr className="border-[#e0e0e0]" />
-
-          {/* ── 4. Line items ────────────────────────────────────────────────── */}
-          <InvoiceLineItems />
-
-          <hr className="border-[#e0e0e0]" />
-
-          {/* ── 5. Notes + Summary ───────────────────────────────────────────── */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <InvoiceNotes />
-            <InvoiceSummary />
-          </div>
-
-          <hr className="border-[#e0e0e0]" />
-
-          {/* ── 6. Create button + feedback ──────────────────────────────────── */}
-          <div className="flex flex-col gap-3">
-            {/* Success banner */}
-            {status === "success" && (
-              <div
-                role="status"
-                aria-live="polite"
-                className="flex items-center gap-2 rounded-md bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                Invoice saved and PDF download started.
-              </div>
-            )}
-
-            {/* Error banner */}
-            {status === "error" && (
-              <div
-                role="alert"
-                aria-live="assertive"
-                className="flex items-center gap-2 rounded-md bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-800"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 9v3m0 3h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
-                  />
-                </svg>
-                {errorMessage || "Failed to generate PDF. Please try again."}
-              </div>
-            )}
-
-            <Button
-              variant="primary"
-              onClick={handleCreate}
-              disabled={status === "generating"}
-              aria-busy={status === "generating"}
+        {/* ── 6. Create button + feedback ──────────────────────────────────── */}
+        <div className="flex flex-col gap-3">
+          {/* Success banner */}
+          {status === "success" && (
+            <div
+              role="status"
+              aria-live="polite"
+              className="flex items-center gap-2 rounded-md bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800"
             >
-              {status === "generating" ? "Generating PDF…" : "Create the invoice"}
-            </Button>
-          </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              Invoice saved and PDF download started.
+            </div>
+          )}
+
+          {/* Error banner */}
+          {status === "error" && (
+            <div
+              role="alert"
+              aria-live="assertive"
+              className="flex items-center gap-2 rounded-md bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 9v3m0 3h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
+                />
+              </svg>
+              {errorMessage || "Failed to generate PDF. Please try again."}
+            </div>
+          )}
+
+          <Button
+            variant="primary"
+            onClick={handleCreate}
+            disabled={status === "generating"}
+            aria-busy={status === "generating"}
+          >
+            {status === "generating" ? "Generating PDF…" : "Create the invoice"}
+          </Button>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
 

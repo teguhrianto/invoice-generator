@@ -29,16 +29,19 @@ export function Select({ label, options, className = "", id: idProp, ...rest }: 
 
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor={selectId} className="text-sm font-medium text-[#212121]">
+      <label
+        htmlFor={selectId}
+        className="text-xs font-semibold uppercase tracking-wider text-[#757575]"
+      >
         {label}
       </label>
       <select
         id={selectId}
         className={[
-          "rounded-md border border-[#e0e0e0] px-3 py-2 text-sm text-[#212121] bg-white",
-          "hover:border-[#bdbdbd]",
-          "focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:ring-offset-1",
-          "transition-colors duration-150 cursor-pointer",
+          "rounded-xl border border-[#c8c8c8] px-4 py-2.5 text-sm text-[#212121] bg-white",
+          "hover:border-[#c0c0c0]",
+          "focus:outline-none focus:bg-white focus:ring-4 focus:ring-[#4caf50]/15 focus:border-[#4caf50]",
+          "transition-all duration-150 cursor-pointer",
           className,
         ]
           .filter(Boolean)

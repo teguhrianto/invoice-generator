@@ -15,7 +15,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: "bg-[#4caf50] hover:bg-[#43a047] text-white focus-visible:ring-[#4caf50]",
+  primary:
+    "bg-[#b5f23d] hover:bg-[#a3d935] active:bg-[#91c42e] text-[#163016] font-bold focus-visible:ring-[#b5f23d]",
   secondary:
     "bg-white hover:bg-gray-50 text-[#212121] border border-[#e0e0e0] focus-visible:ring-gray-400",
   danger: "bg-red-600 hover:bg-red-700 text-white focus-visible:ring-red-500",
@@ -42,7 +43,7 @@ export function Button({
       {...rest}
       disabled={disabled}
       className={[
-        "w-full rounded-md px-4 py-2.5 text-sm font-semibold transition-colors duration-150",
+        "w-full rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-150",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
         variantClasses[variant],
         disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",

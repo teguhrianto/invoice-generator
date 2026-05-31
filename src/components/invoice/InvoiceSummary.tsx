@@ -45,7 +45,7 @@ export function InvoiceSummary() {
               value: Math.min(100, Math.max(0, parseFloat(e.target.value) || 0)),
             })
           }
-          className="w-24 rounded border border-[#e0e0e0] px-2 py-1 text-right text-sm text-[#212121] bg-white placeholder:text-[#bdbdbd] hover:border-[#bdbdbd] focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:ring-offset-1 transition-colors duration-150"
+          className="w-24 rounded-xl border border-[#c8c8c8] px-3 py-2 text-right text-sm text-[#212121] bg-white placeholder:text-[#bdbdbd] hover:border-[#a0a0a0] focus:outline-none focus:border-[#4caf50] focus:ring-4 focus:ring-[#4caf50]/10 transition-all duration-150"
         />
       </div>
 
@@ -77,7 +77,7 @@ export function InvoiceSummary() {
               value: Math.max(0, parseFloat(e.target.value) || 0),
             })
           }
-          className="w-24 rounded border border-[#e0e0e0] px-2 py-1 text-right text-sm text-[#212121] bg-white placeholder:text-[#bdbdbd] hover:border-[#bdbdbd] focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:ring-offset-1 transition-colors duration-150"
+          className="w-24 rounded-xl border border-[#c8c8c8] px-3 py-2 text-right text-sm text-[#212121] bg-white placeholder:text-[#bdbdbd] hover:border-[#a0a0a0] focus:outline-none focus:border-[#4caf50] focus:ring-4 focus:ring-[#4caf50]/10 transition-all duration-150"
         />
       </div>
 
@@ -101,7 +101,7 @@ export function InvoiceSummary() {
               value: Math.max(0, parseFloat(e.target.value) || 0),
             })
           }
-          className="w-24 rounded border border-[#e0e0e0] px-2 py-1 text-right text-sm text-[#212121] bg-white placeholder:text-[#bdbdbd] hover:border-[#bdbdbd] focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:ring-offset-1 transition-colors duration-150"
+          className="w-24 rounded-xl border border-[#c8c8c8] px-3 py-2 text-right text-sm text-[#212121] bg-white placeholder:text-[#bdbdbd] hover:border-[#a0a0a0] focus:outline-none focus:border-[#4caf50] focus:ring-4 focus:ring-[#4caf50]/10 transition-all duration-150"
         />
       </div>
 

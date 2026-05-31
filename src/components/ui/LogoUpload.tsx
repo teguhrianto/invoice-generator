@@ -60,34 +60,11 @@ export function LogoUpload({ value, onChange }: LogoUploadProps) {
       return;
     }
 
+    // File is already validated to be ≤200 KB — read it directly without
+    // canvas conversion so the original format (including PNG transparency) is preserved.
     const reader = new FileReader();
     reader.onload = (evt) => {
-      const dataUrl = evt.target?.result as string;
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        // Cap canvas at 800px wide to prevent oversized data URLs.
-        const maxWidth = 800;
-        const scale = img.width > maxWidth ? maxWidth / img.width : 1;
-        canvas.width = img.width * scale;
-        canvas.height = img.height * scale;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        canvas.toBlob(
-          (blob) => {
-            if (!blob) return;
-            const compressedReader = new FileReader();
-            compressedReader.onload = (e) => {
-              onChange(e.target?.result as string);
-            };
-            compressedReader.readAsDataURL(blob);
-          },
-          "image/jpeg",
-          0.85,
-        );
-      };
-      img.src = dataUrl;
+      onChange(evt.target?.result as string);
     };
     reader.readAsDataURL(file);
   }

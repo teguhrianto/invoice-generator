@@ -31,7 +31,10 @@ export function Input({ label, error, className = "", id: idProp, ...rest }: Inp
 
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor={inputId} className="text-sm font-medium text-[#212121]">
+      <label
+        htmlFor={inputId}
+        className="text-xs font-semibold uppercase tracking-wider text-[#757575]"
+      >
         {label}
       </label>
       <input
@@ -39,11 +42,13 @@ export function Input({ label, error, className = "", id: idProp, ...rest }: Inp
         aria-describedby={error ? errorId : undefined}
         aria-invalid={error ? true : undefined}
         className={[
-          "rounded-md border px-3 py-2 text-sm text-[#212121] bg-white",
-          "placeholder:text-[#757575]",
-          "focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:ring-offset-1",
-          "transition-colors duration-150",
-          error ? "border-red-500 focus:ring-red-500" : "border-[#e0e0e0] hover:border-[#bdbdbd]",
+          "rounded-xl border px-4 py-2.5 text-sm text-[#212121] bg-white",
+          "placeholder:text-[#bdbdbd]",
+          "focus:outline-none focus:bg-white focus:ring-4 focus:ring-[#4caf50]/15 focus:border-[#4caf50]",
+          "transition-all duration-150",
+          error
+            ? "border-red-400 focus:ring-red-200 focus:border-red-500"
+            : "border-[#c8c8c8] hover:border-[#c0c0c0]",
           className,
         ]
           .filter(Boolean)

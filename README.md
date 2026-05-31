@@ -16,7 +16,7 @@ Open-source, client-side invoice generator. Create and download professional PDF
 - **Multi-currency** — USD, EUR, GBP, IDR, SGD, AUD, JPY, CAD, CHF, MYR
 - **Line items** — Add, remove, and reorder rows; amounts auto-calculate
 - **Tax, discount & shipping** — Tax is computed on the post-discount amount
-- **Logo upload** — JPG / PNG / JPEG, max 200 KB; compressed before storage
+- **Logo upload** — JPG / PNG / JPEG, max 200 KB; original format preserved (PNG transparency supported)
 - **100% client-side** — localStorage only; works offline after the initial load
 
 ---
@@ -71,10 +71,12 @@ NEXT_PUBLIC_SITE_URL=https://invoice-generator.teguhrianto.com
 ```
 src/
 ├── app/                    # Next.js App Router pages and metadata
-│   ├── page.tsx            # "/" — invoice form
+│   ├── page.tsx            # "/" — hero + invoice form + tutorial + FAQ
 │   └── history/page.tsx    # "/history" — invoice history list
 │
 ├── components/
+│   ├── layout/             # Header (sticky nav) and Footer
+│   ├── home/               # HeroSection, TutorialSection, FaqSection
 │   ├── invoice/            # Invoice form sections (header, dates, line items, summary…)
 │   ├── pdf/                # @react-pdf/renderer components (InvoicePDF, table, summary)
 │   ├── history/            # History list and card components

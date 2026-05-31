@@ -7,9 +7,8 @@ import { useInvoice } from "@/hooks/useInvoice";
 /**
  * Invoice dates section.
  *
- * Renders two date inputs: "Invoice date" and "Due date". Both dispatch
- * SET_FIELD to InvoiceContext. Uses native <input type="date"> which requires
- * and stores "YYYY-MM-DD" format — consistent with the Invoice type.
+ * Renders Invoice date and Due date using the standard Input component
+ * with type="date" so the browser's native date picker works correctly.
  */
 export function InvoiceDates() {
   const { state, dispatch } = useInvoice();
@@ -21,24 +20,14 @@ export function InvoiceDates() {
         type="date"
         value={state.invoiceDate}
         onChange={(e) =>
-          dispatch({
-            type: "SET_FIELD",
-            field: "invoiceDate",
-            value: e.target.value,
-          })
+          dispatch({ type: "SET_FIELD", field: "invoiceDate", value: e.target.value })
         }
       />
       <Input
         label="Due date"
         type="date"
         value={state.dueDate}
-        onChange={(e) =>
-          dispatch({
-            type: "SET_FIELD",
-            field: "dueDate",
-            value: e.target.value,
-          })
-        }
+        onChange={(e) => dispatch({ type: "SET_FIELD", field: "dueDate", value: e.target.value })}
       />
     </div>
   );

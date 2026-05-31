@@ -39,6 +39,9 @@ export interface InvoiceLineItemRowProps {
  * a11y: All inputs have visible aria-labels since the column headers act as
  * the visual labels. The action buttons have descriptive aria-labels.
  */
+const inputCls =
+  "rounded-xl border border-[#c8c8c8] bg-white px-4 py-2.5 text-sm text-[#212121] placeholder:text-[#bdbdbd] focus:outline-none focus:border-[#4caf50] focus:ring-4 focus:ring-[#4caf50]/10 transition-all duration-150";
+
 export function InvoiceLineItemRow({
   item,
   index,
@@ -50,18 +53,15 @@ export function InvoiceLineItemRow({
   total,
 }: InvoiceLineItemRowProps) {
   return (
-    <div
-      data-testid="line-item-row"
-      className="relative grid grid-cols-[1fr_120px_100px_120px] gap-2 items-center rounded-md bg-white border border-[#e0e0e0] px-3 py-2 group"
-    >
-      {/* Reorder buttons (↑ / ↓) */}
+    <div data-testid="line-item-row" className="relative flex items-center gap-2">
+      {/* Reorder buttons — absolute left, outside the row */}
       <div className="absolute -left-8 top-1/2 -translate-y-1/2 flex flex-col gap-0.5">
         <button
           type="button"
           onClick={() => onMoveUp(index)}
           disabled={index === 0}
           aria-label={`Move item ${index + 1} up`}
-          className="flex h-5 w-5 items-center justify-center rounded text-[#757575] hover:text-[#212121] disabled:opacity-30 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4caf50] transition-colors duration-150"
+          className="flex h-5 w-5 cursor-pointer items-center justify-center text-[#bdbdbd] hover:text-[#212121] disabled:opacity-25 disabled:cursor-not-allowed focus-visible:outline-none transition-colors duration-150"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +81,7 @@ export function InvoiceLineItemRow({
           onClick={() => onMoveDown(index)}
           disabled={index === total - 1}
           aria-label={`Move item ${index + 1} down`}
-          className="flex h-5 w-5 items-center justify-center rounded text-[#757575] hover:text-[#212121] disabled:opacity-30 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4caf50] transition-colors duration-150"
+          className="flex h-5 w-5 cursor-pointer items-center justify-center text-[#bdbdbd] hover:text-[#212121] disabled:opacity-25 disabled:cursor-not-allowed focus-visible:outline-none transition-colors duration-150"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -98,17 +98,17 @@ export function InvoiceLineItemRow({
         </button>
       </div>
 
-      {/* Description */}
+      {/* Description — grows to fill available space */}
       <input
         type="text"
         value={item.description}
         placeholder="Item description"
         aria-label={`Item ${index + 1} description`}
         onChange={(e) => onUpdate(item.id, "description", e.target.value)}
-        className="w-full rounded border border-transparent bg-transparent px-2 py-1 text-sm text-[#212121] placeholder:text-[#bdbdbd] focus:border-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:ring-offset-1 transition-colors duration-150"
+        className={`${inputCls} flex-1 min-w-0`}
       />
 
-      {/* Unit cost — negative values are valid (e.g. loan repayment, credit) */}
+      {/* Unit cost — fixed 120px */}
       <input
         type="number"
         value={item.unitCost === 0 ? "" : item.unitCost}
@@ -116,10 +116,10 @@ export function InvoiceLineItemRow({
         step="any"
         aria-label={`Item ${index + 1} unit cost`}
         onChange={(e) => onUpdate(item.id, "unitCost", parseFloat(e.target.value) || 0)}
-        className="w-full rounded border border-transparent bg-transparent px-2 py-1 text-sm text-[#212121] placeholder:text-[#bdbdbd] text-right focus:border-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:ring-offset-1 transition-colors duration-150"
+        className={`${inputCls} w-30 shrink-0 text-right`}
       />
 
-      {/* Quantity */}
+      {/* Quantity — fixed 100px */}
       <input
         type="number"
         value={item.quantity === 0 ? "" : item.quantity}
@@ -130,30 +130,30 @@ export function InvoiceLineItemRow({
         onChange={(e) =>
           onUpdate(item.id, "quantity", Math.max(0, parseFloat(e.target.value) || 0))
         }
-        className="w-full rounded border border-transparent bg-transparent px-2 py-1 text-sm text-[#212121] placeholder:text-[#bdbdbd] text-right focus:border-[#e0e0e0] focus:outline-none focus:ring-2 focus:ring-[#4caf50] focus:ring-offset-1 transition-colors duration-150"
+        className={`${inputCls} w-25 shrink-0 text-right`}
       />
 
-      {/* Amount (read-only) */}
+      {/* Amount — fixed 120px, read-only display */}
       <span
         data-testid="line-item-amount"
-        className="text-sm text-[#212121] text-right font-medium pr-7"
         aria-label={`Item ${index + 1} amount`}
+        className="w-30 shrink-0 flex items-center justify-end rounded-xl border border-[#c8c8c8] bg-white px-4 py-2.5 text-sm font-medium text-[#212121]"
       >
         {formatCurrency(item.amount, currency)}
       </span>
 
-      {/* Remove button — hidden when this is the only remaining item */}
-      {total > 1 && (
+      {/* Remove button — dark green, shown only when > 1 item */}
+      {total > 1 ? (
         <button
           type="button"
           onClick={() => onRemove(item.id)}
           aria-label={`Remove item ${index + 1}`}
-          className="absolute right-2 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded text-[#757575] hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 transition-colors duration-150"
+          className="shrink-0 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-green-50 text-[#163016] hover:bg-red-500 hover:text-white focus-visible:outline-none transition-all duration-150"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
+            width="12"
+            height="12"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -163,6 +163,8 @@ export function InvoiceLineItemRow({
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
+      ) : (
+        <span className="shrink-0 w-9 h-9" />
       )}
     </div>
   );

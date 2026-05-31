@@ -35,7 +35,7 @@ export function InvoiceHistoryPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5] py-8 px-4">
+    <div className="min-h-screen bg-[#f5f5f5] py-8 px-4">
       <div className="mx-auto max-w-3xl">
         {/* Page header */}
         <div className="mb-6 flex items-center justify-between gap-4">
@@ -89,6 +89,6 @@ export function InvoiceHistoryPage() {
           </div>
         )}
       </div>
-    </main>
+    </div>
   );
 }

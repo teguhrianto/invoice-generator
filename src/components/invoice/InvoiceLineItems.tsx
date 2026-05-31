@@ -45,18 +45,20 @@ export function InvoiceLineItems() {
 
   return (
     <section aria-label="Line items" className="rounded-lg bg-[#f5f5f5] p-4 flex flex-col gap-3">
-      {/* Column headers */}
+      {/* Column headers — mirrors flex layout of InvoiceLineItemRow */}
       {state.lineItems.length > 0 && (
-        <div className="grid grid-cols-[1fr_120px_100px_120px] gap-2 pl-7 pr-8 text-xs font-semibold text-[#757575] uppercase tracking-wide">
-          <span>Description</span>
-          <span className="text-right">Unit cost</span>
-          <span className="text-right">Qty</span>
-          <span className="text-right">Amount</span>
+        <div className="flex items-center gap-2 pl-9 text-xs font-semibold uppercase tracking-wider text-[#9e9e9e]">
+          <span className="flex-1 min-w-0 pl-4">Item description</span>
+          <span className="w-30 shrink-0 text-right pr-4">Unit cost</span>
+          <span className="w-25 shrink-0 text-right pr-4">Quantity</span>
+          <span className="w-30 shrink-0 text-right pr-4">Amount</span>
+          {/* Spacer matching × button width */}
+          <span className="shrink-0 w-9" />
         </div>
       )}
 
-      {/* Rows */}
-      <div className="flex flex-col gap-2 pl-7">
+      {/* Rows — pl-9 leaves space for the absolute-positioned reorder buttons */}
+      <div className="flex flex-col gap-2 pl-9">
         {state.lineItems.map((item, index) => (
           <InvoiceLineItemRow
             key={item.id}
@@ -78,11 +80,11 @@ export function InvoiceLineItems() {
           type="button"
           onClick={handleAdd}
           aria-label="Add line item"
-          className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-[#4caf50] hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4caf50] focus-visible:ring-offset-1 transition-colors duration-150"
+          className="flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-[#163016] hover:bg-[#163016]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#163016] focus-visible:ring-offset-1 transition-colors duration-150"
         >
           <span
             aria-hidden="true"
-            className="flex h-6 w-6 items-center justify-center rounded-full bg-[#4caf50] text-white"
+            className="flex h-6 w-6 items-center justify-center rounded-full bg-[#163016] text-[#b5f23d]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
