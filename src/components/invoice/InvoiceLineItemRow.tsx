@@ -142,26 +142,28 @@ export function InvoiceLineItemRow({
         {formatCurrency(item.amount, currency)}
       </span>
 
-      {/* Remove button */}
-      <button
-        type="button"
-        onClick={() => onRemove(item.id)}
-        aria-label={`Remove item ${index + 1}`}
-        className="absolute right-2 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded text-[#757575] hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 transition-colors duration-150"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="14"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2.5}
-          aria-hidden="true"
+      {/* Remove button — hidden when this is the only remaining item */}
+      {total > 1 && (
+        <button
+          type="button"
+          onClick={() => onRemove(item.id)}
+          aria-label={`Remove item ${index + 1}`}
+          className="absolute right-2 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded text-[#757575] hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 transition-colors duration-150"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }

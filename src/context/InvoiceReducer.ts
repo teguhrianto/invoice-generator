@@ -50,6 +50,7 @@ export function createInitialInvoice(): Invoice {
     invoiceDate: today,
     dueDate: getDefaultDueDate(today),
     currency: DEFAULT_CURRENCY,
+    lineItems: [blankLineItem()],
   };
 }
 
@@ -62,8 +63,10 @@ export function invoiceReducer(state: Invoice, action: InvoiceAction): Invoice {
 
   switch (action.type) {
     case "LOAD_INVOICE": {
-      // Replace entire state and re-derive to fix any stale stored totals.
-      return deriveTotals({ ...action.payload, updatedAt: now });
+      const loaded = action.payload;
+      // Ensure at least one line item even if the stored invoice has none.
+      const lineItems = loaded.lineItems.length > 0 ? loaded.lineItems : [blankLineItem()];
+      return deriveTotals({ ...loaded, lineItems, updatedAt: now });
     }
 
     case "RESET_INVOICE": {
@@ -111,6 +114,8 @@ export function invoiceReducer(state: Invoice, action: InvoiceAction): Invoice {
     }
 
     case "REMOVE_LINE_ITEM": {
+      // Always keep at least one line item.
+      if (state.lineItems.length <= 1) return state;
       return deriveTotals({
         ...state,
         updatedAt: now,
