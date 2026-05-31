@@ -2,6 +2,8 @@
 
 Open-source, client-side invoice generator. Create and download professional PDF invoices in seconds. All data stays in your browser — no account, no server, no database.
 
+**[→ Live demo: invoice-generator.teguhrianto.com](https://invoice-generator.teguhrianto.com)**
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/teguhrianto/invoice-generator)
 
 ---
@@ -62,7 +64,7 @@ Copy `.env.example` to `.env.local` and set:
 NEXT_PUBLIC_IDR_RATE=16000
 
 # Canonical URL used in sitemap.xml and Open Graph tags
-NEXT_PUBLIC_SITE_URL=https://your-deployment.vercel.app
+NEXT_PUBLIC_SITE_URL=https://invoice-generator.teguhrianto.com
 ```
 
 ---
